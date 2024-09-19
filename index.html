@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>Hiiiiii</title>
+<style>
+p {
+    text-align: center;
+    font-size: 32px;
+    font-family: Candara, Oswald;
+}
+img {
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+}
+#botao1, #botao2 {
+    z-index: 1000; /* Ensure buttons are on top */
+}
+#botao1 {
+    position: fixed;
+    top: 70%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+#botao2 {
+    position: absolute;
+    left: 42%;
+    top: 68%;
+    transition: left 0.2s, top 0.2s;
+}
+
+img.displayedImage {
+    position: absolute;
+    width: 25%; /* Larger image size */
+    max-width: 250px; /* Increased max width */
+    display: none; /* Hidden initially */
+    z-index: 999; /* Lower than buttons */
+    transition: left 0.2s, top 0.2s;
+}
+</style>
+</head>
+<body>
+<p>Can we fuck please??</p>
+<img src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif">
+
+<button id="botao1">OFC POGII</button>
+<button id="botao2">NAH UH</button>
+
+<!-- Images that will appear after clicks -->
+<img id="image1" class="displayedImage" src="https://media1.tenor.com/m/6CujUsC1CIkAAAAd/crying-black-guy-meme50fps-interpolated-interpolated.gif" alt="First Image">
+<img id="image2" class="displayedImage" src="52a94478ee4e05b734b0a0091d9a1387.jpg" alt="Second Image">
+<img id="image3" class="displayedImage" src="anh-meme-meo-khoc-cuc-cute_042216244.jpg" alt="Third Image">
+
+<script>
+// "NO" button moves when tapped
+const button2 = document.getElementById('botao2');
+let clickCount = 0;
+
+// Move the button when tapped or hovered
+function moveButton() {
+    const newLeft = Math.random() * 8 + 38;  // Moves between 38% and 46% horizontally
+    const newTop = Math.random() * 4 + 66;   // Moves between 66% and 70% vertically
+    button2.style.left = newLeft + '%';
+    button2.style.top = newTop + '%';
+}
+
+// Add both 'mouseover' for desktop and 'touchstart' for mobile
+button2.addEventListener('mouseover', moveButton);
+button2.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevent touch click
+    moveButton();
+});
+
+// Display images one by one based on click count
+button2.addEventListener('click', function() {
+    clickCount++;
+
+    // Randomize the position of each image
+    function randomizeImagePosition(image) {
+        const randomLeft = Math.random() * 80 + 10;  // random horizontal position between 10% and 90%
+        const randomTop = Math.random() * 80 + 10;   // random vertical position between 10% and 90%
+        image.style.left = randomLeft + '%';
+        image.style.top = randomTop + '%';
+    }
+
+    // Show the images based on the click count
+    if (clickCount === 3) {
+        const image1 = document.getElementById('image1');
+        randomizeImagePosition(image1);
+        image1.style.display = 'block'; // Show first GIF
+    } else if (clickCount === 4) {
+        const image2 = document.getElementById('image2');
+        randomizeImagePosition(image2);
+        image2.style.display = 'block'; // Show second image
+    } else if (clickCount === 5) {
+        const image3 = document.getElementById('image3');
+        randomizeImagePosition(image3);
+        image3.style.display = 'block'; // Show third image
+    }
+});
+
+// Alert when "YES BBY!" button is clicked
+document.getElementById('botao1').addEventListener('click', function() {
+    alert('YAYY COME HEREE 😍❤️');
+});
+</script>
+</body>
+</html>
